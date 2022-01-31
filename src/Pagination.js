@@ -8,10 +8,12 @@ const Pagination = ({ productsPerPage, totalproducts, paginate }) => {
   }
 
   return (
-    <nav>
-      <ul className="pagination">
+    <nav aria-label="Page navigation example">
+      <ul className="pagination  justify-content-center">
         {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
+          <li key={number} className="page-item " style={{
+  backgroundColor: "#C095F7",
+  color: "white"}}>
             <a onClick={() => paginate(number)} href="!#" className="page-link">
               {number}
             </a>

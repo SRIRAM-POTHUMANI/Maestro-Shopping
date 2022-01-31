@@ -9,7 +9,7 @@ function Checkout() {
   return (
     <div className="checkout">
       <img
-        src="https://images-na.ssl-images-amazon.com/images/G/02/UK_CCMP/TM/OCC_Amazon1._CB423492668_.jpg"
+        src="https://png.pngtree.com/thumb_back/fh260/back_our/20190621/ourmid/pngtree-e-commerce-education-banner-background-image_186720.jpg"
         alt="ad"
         className="checkout_ad"
       />
@@ -18,9 +18,9 @@ function Checkout() {
         <div className="subtotalc ">
           <Subtotal />
         </div>
-        <div class="corders card mb-3 text-start" style={{ maxWidth: "740px" }}>
+        <div class="corders mb-3 text-start">
           <h2 className="card-header">Your Shopping basket</h2>
-          <div class="row g-2 p2 m-2">
+          <div class="row row-cols-1 row-cols-md-1  gap-1 mt-2 mb-2  d-flex justify-content-evenly">
             {basket.map((item) => (
               <CheckoutProduct
                 className="card"

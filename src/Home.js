@@ -44,7 +44,7 @@ function Home() {
             url5="https://m.media-amazon.com/images/I/610zaYNI4OL._SX3000_.jpg"
           />
         </div>
-        <div className="productsrow g-4">
+        <div>
           <div class="row row-cols-1 row-cols-md-3 g-4 m-3 d-flex d-flex justify-content-evenly">
             {currentProducts.map((item) => {
               return (
@@ -54,7 +54,7 @@ function Home() {
                     title={item.title}
                     desc={item.description}
                     price={item.price}
-                    // rating={item.rating.rate}
+                    rating={item.rating.rate}
                     image={item.image}
                   />
                 </div>
@@ -66,6 +66,7 @@ function Home() {
           <HourglassEmptyIcon />
         ) : (
           <Pagination
+            class="d-flex justify-content-center"
             productsPerPage={productsPerPage}
             totalproducts={products.length}
             paginate={paginate}

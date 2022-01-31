@@ -22,6 +22,8 @@ function Payment() {
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState(true);
 
+  const [address, setaddress] = useState("");
+
   useEffect(() => {
     // generate the special stripe secret which allows us to charge a customer
     const getClientSecret = async () => {
@@ -61,6 +63,7 @@ function Payment() {
             basket: basket,
             amount: paymentIntent.amount,
             created: paymentIntent.created,
+            address: address ? address : "Not Available",
           });
 
         setSucceeded(true);
@@ -84,84 +87,93 @@ function Payment() {
 
   return (
     <div className="payment">
-      <div className="payment__container">
+      <form
+        className="payment__container">
         <h1>
           Checkout (<Link to="/checkout">{basket?.length} items</Link>)
         </h1>
-
         {/* Payment section - delivery address */}
-        <div className="payment__section">
+        <div className="d-flex justify-content-start combined gap-2 payment__section">
           <div className="payment__title">
-            <h3>Delivery Address</h3>
+            <h3>Delivery Details</h3>
           </div>
-          <div className="payment__address lh-sm">
-            <p>{user?.email}</p>
-            <p>211/1, Thiruvalluvar Main Street</p>
-            <p>Nehru Nagar, Madurai</p>
-            <p>Tamil Nadu - 625003</p>
+          <div class="corders text-start">
+            <div class="form-floating" style={{ maxWidth: "500px" }}>
+              <textarea
+                class="form-control"
+                placeholder="Leave your address here"
+                id="floatingTextarea"
+                required
+                value={address}
+                onChange={(e) => setaddress(e.target.value)}
+              ></textarea>
+              <label for="floatingTextarea">Address</label>
+            </div>
           </div>
         </div>
-
         {/* Payment section - Review Items */}
-        <div className="payment__section">
+        <div className="d-flex justify-content-start combined gap-2 payment__section">
           <div className="payment__title">
             <h3>Review items and delivery</h3>
           </div>
-          <div className="payment__items">
-            {basket.map((item) => (
-              <CheckoutProduct
-                id={item.id}
-                title={item.title}
-                image={item.image}
-                price={item.price}
-                rating={item.rating}
-              />
-            ))}
+          <div class="corders mb-3 text-start">
+            <div class="payment__items row row-cols-1 row-cols-md-1  gap-3 mb-2  d-flex justify-content-start">
+              {basket.map((item) => (
+                <CheckoutProduct
+                  id={item.id}
+                  title={item.title}
+                  image={item.image}
+                  price={item.price}
+                  rating={item.rating}
+                />
+              ))}
+            </div>
           </div>
         </div>
-
         {/* Payment section - Payment method */}
-        <div className="payment__section">
+        <div className="d-flex justify-content-start combined gap-2 payment__section">
           <div className="payment__title">
             <h3>Payment Method</h3>
           </div>
-          <div className="payment__details text-center">
-            {/* Stripe magic will go */}
+          <div class="corders mb-3 text-start  m-2">
+            <div class="form-floating" style={{ maxWidth: "400px" }}>
+              {/* Stripe magic will go */}
 
-            <form onSubmit={handleSubmit} className="card p-3 gap-2">
-              <CardElement
-                onChange={handleChange}
-                className="card card-header"
-              />
-              <p className="text-start ms-3 mt-3 text-secondary lh-sm">
-                Use dummy card details given below: <br />
-                Card Number- 4242 4242 4242 4242 <br />
-                MM/YY - 02/24
-                <br />
-                CVC - 242
-                <br />
-                ZIP - 42424
-              </p>
-              <div className="payment__priceContainer">
-                <CurrencyFormat
-                  renderText={(value) => <h3>Order Total: {value}</h3>}
-                  decimalScale={2}
-                  value={getBasketTotal(basket)}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"₹"}
+              <div onSubmit={handleSubmit} className="card p-3 gap-2">
+                <CardElement
+                  onChange={handleChange}
+                  className="card card-header"
                 />
-                <button disabled={processing || disabled || succeeded}>
-                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-                </button>
-              </div>
+                <p className="text-start ms-3 mt-3 text-secondary lh-sm">
+                  Use dummy card details given below: <br />
+                  Card Number- 4242 4242 4242 4242 <br />
+                  MM/YY - 02/24
+                  <br />
+                  CVC - 242
+                  <br />
+                  ZIP - 42424
+                </p>
+                <div className="payment__priceContainer">
+                  <CurrencyFormat
+                    renderText={(value) => <h3>Order Total: {value}</h3>}
+                    decimalScale={0}
+                    value={getBasketTotal(basket)}
+                    displayType={"text"}
+                    thousandSeparator={true}
+                    prefix={"₹"}
+                  />
+                  <button disabled={processing || disabled || succeeded}>
+                    <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
+                  </button>
+                </div>
 
-              {/* Errors */}
-              {error && <div>{error}</div>}
-            </form>
+                {/* Errors */}
+                {error && <div>{error}</div>}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

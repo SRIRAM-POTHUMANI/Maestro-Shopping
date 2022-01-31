@@ -14,28 +14,28 @@ function CheckoutProduct({ id, image, title, price, rating, hideButton }) {
   };
 
   return (
-    <div className="border-bottom m-2 flex-nowrap">
-      <div class=" col-md-4">
-        <img src={image} class="img-fluid rounded-start" alt="..." />
+    <div class="card mb-2 gap-1">
+      <div className="text-center">
+        <img src={image} class="card-img-top productimg" alt="..." />
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{title}</h5>
-          <div className="checkoutProduct__rating">
-            {Array(rating)
-              .fill()
-              .map((_, i) => (
-                <p>🌟</p>
-              ))}
-          </div>
-          <p>
-            <small>₹</small>
-            <strong>{price}</strong>
-          </p>
-          {!hideButton && (
-            <button onClick={removeFromBasket}>Remove from Basket</button>
-          )}
+      <div class="card-body  text-start">
+        <h5 class="card-title">{title}</h5>
+        <div className="checkoutProduct__rating">
+          {Array(Math.ceil(rating))
+            .fill()
+            .map((_, i) => (
+              <p>🌟</p>
+            ))}
         </div>
+        <p>
+          <small>₹</small>
+          <strong>{Math.ceil(price)}</strong>
+        </p>
+        {!hideButton && (
+          <button onClick={removeFromBasket} class="justify-content-center">
+            Remove from Basket
+          </button>
+        )}
       </div>
     </div>
   );

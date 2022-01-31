@@ -28,20 +28,36 @@ function Product({ id, title, price, image, rating, desc }) {
       <div className="text-center">
         <img src={image} class="card-img-top productimg" alt="..." />
       </div>
-      <div class="card-body">
-        <h5 class="card-title fs-367">{title}</h5>
-        <h6>{truncate(desc, 100)}</h6>
+      <div
+        class="card-body  text-start"
+        style={{ display: "flex", flexDirection: "column-reverse" }}
+      >
+        <h6>
+          <strong> ₹ </strong>
+          <strong>{Math.ceil(price)}</strong>
+        </h6>
         <div className="product_rating">
-          {Array(rating)
+          {Array(Math.ceil(rating))
             .fill()
             .map((_, i) => (
               <p>⭐</p>
             ))}
         </div>
-        <h6>
-          <small>Rs - </small>
-          <strong>{price}</strong>
-        </h6>
+        <small
+          data-bs-toggle="tooltip blockquote-footer fs-6"
+          data-bs-placement="top"
+          title={desc}
+        >
+          {truncate(desc, 75)}
+        </small>
+        <strong
+          class="card-title fs-6 text-wrap"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title={title}
+        >
+          {truncate(title, 25)}
+        </strong>
       </div>
       <div class=" text-center">
         <button

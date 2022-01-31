@@ -6,15 +6,18 @@ import CurrencyFormat from "react-currency-format";
 
 function Order({ order }) {
   return (
-    <div class="corders card mb-3 flex-wrap">
+    <div class="corders card mb-3">
       <div className="card-header">
         <p>
           Order ID - <small>{order.id}</small>
         </p>
+        <p>
+          Delivery Address - <small>{order.data.address}</small>
+        </p>
         <p>{moment.unix(order.data.created).format("MMMM Do YYYY, h:mma")}</p>
       </div>
 
-      <div class="row g-2 p2 m-2 flex-wrap">
+      <div class="row gap-2 p2 m-2 flex-wrap">
         {order.data.basket?.map((item) => (
           <CheckoutProduct
             id={item.id}
