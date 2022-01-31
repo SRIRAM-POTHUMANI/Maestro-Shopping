@@ -2,7 +2,6 @@ import React from "react";
 import "./Header.css";
 import ListAltOutlinedIcon from "@material-ui/icons/ListAltOutlined";
 import PersonIcon from "@material-ui/icons/Person";
-import SearchIcon from "@material-ui/icons/Search";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import { Link } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
@@ -72,29 +71,10 @@ function Header() {
                   </div>
                 </Link>
               </li>
-              <li class="nav-item col">
-                <div className="header_option nav-link">
-                  <span className="header_optionline1">Have</span>
-                  <span className="header_optionline2">Prime</span>
-                </div>
-              </li>
             </ul>
           </div>
 
-          {/* <form class="d-flex header_search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button
-              class="btn btn-outline-success  header_searchicon"
-              type="submit"
-            >
-              Search
-            </button>
-          </form> */}
+          
         </div>
       </div>
     </nav>

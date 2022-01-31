@@ -87,10 +87,9 @@ function Payment() {
 
   return (
     <div className="payment">
-      <form
-        className="payment__container">
+      <form onSubmit={handleSubmit} className="payment__container">
         <h1>
-          Checkout (<Link to="/checkout">{basket?.length} items</Link>)
+          Checkout <Link to="/checkout">{basket?.length} items</Link>
         </h1>
         {/* Payment section - delivery address */}
         <div className="d-flex justify-content-start combined gap-2 payment__section">
@@ -103,7 +102,6 @@ function Payment() {
                 class="form-control"
                 placeholder="Leave your address here"
                 id="floatingTextarea"
-                required
                 value={address}
                 onChange={(e) => setaddress(e.target.value)}
               ></textarea>
@@ -139,7 +137,7 @@ function Payment() {
             <div class="form-floating" style={{ maxWidth: "400px" }}>
               {/* Stripe magic will go */}
 
-              <div onSubmit={handleSubmit} className="card p-3 gap-2">
+              <div className="card p-3 gap-2">
                 <CardElement
                   onChange={handleChange}
                   className="card card-header"
