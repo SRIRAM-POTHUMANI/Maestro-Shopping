@@ -26,9 +26,10 @@
 }
 .card {
   padding: auto;
+  max-width: 300px;
 }
 .productimg {
-  max-height: 300px;
+  max-height: 200px;
   /* max-width: 350px; */
   object-fit: contain;
   padding: 15px;

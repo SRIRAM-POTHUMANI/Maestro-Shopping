@@ -18,6 +18,11 @@ function Product({ id, title, price, image, rating, desc }) {
       },
     });
   };
+
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
+
   return (
     <div class="card h-100 m-auto border-dark">
       <div className="text-center">
@@ -25,7 +30,7 @@ function Product({ id, title, price, image, rating, desc }) {
       </div>
       <div class="card-body">
         <h5 class="card-title fs-367">{title}</h5>
-        <h6>{desc}</h6>
+        <h6>{truncate(desc, 100)}</h6>
         <div className="product_rating">
           {Array(rating)
             .fill()
