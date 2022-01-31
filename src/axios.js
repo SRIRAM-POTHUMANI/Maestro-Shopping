@@ -3,7 +3,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:5001/maestro-shopping/us-central1/api",
+  baseURL: "https://us-central1-maestro-shopping.cloudfunctions.net/api",
   // "https://us-central1-e-commerce-b99ca.cloudfunctions.net/api",
 });
 
