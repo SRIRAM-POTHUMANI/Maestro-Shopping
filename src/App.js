@@ -63,6 +63,10 @@ function App() {
             </Elements>
             {/* </Elements> */}
           </Route>
+          <Route path="/!#">
+            <Header />
+            <Home />
+          </Route>
           <Route path="/">
             <Header />
             <Home />

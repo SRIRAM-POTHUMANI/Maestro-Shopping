@@ -100,8 +100,10 @@ function Payment() {
             <div class="form-floating" style={{ maxWidth: "500px" }}>
               <textarea
                 class="form-control"
-                placeholder="Leave your address here"
-                id="floatingTextarea"
+                placeholder="Leave a comment here"
+                id="floatingTextarea2"
+                required
+                style={{ height: "100px" }}
                 value={address}
                 onChange={(e) => setaddress(e.target.value)}
               ></textarea>
