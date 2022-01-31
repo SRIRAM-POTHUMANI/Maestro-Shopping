@@ -57,7 +57,7 @@ function Header() {
                     <PersonIcon className="header_optionline1 me-1" />
 
                     <span className="header_optionline2">
-                      {user ? "Sign Out" : "Sign In"}
+                      {user ? "Sign Out" : "Sign - In"}
                     </span>
                   </div>
                 </Link>
