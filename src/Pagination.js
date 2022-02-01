@@ -19,7 +19,7 @@ const Pagination = ({ productsPerPage, totalproducts, paginate }) => {
               color: "white",
             }}
           >
-            <a onClick={() => paginate(number)} className="page-link">
+            <a onClick={() => paginate(number)} className="page-link" style={{pointer:"cursor"}}>
               {number}
             </a>
           </li>
